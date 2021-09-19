@@ -1,36 +1,30 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) throws IOException {
-       /* final String splitMe = "123,test,444,\"don't split, this\",more test,1";
-        final String[] splitByQuote = splitMe.split("\"");
-        final String[][] splitByComma = new String[splitByQuote.length][];
-        for (int i = 0; i < splitByQuote.length; i++) {
-            String part = splitByQuote[i];
-            if (i % 2 == 0) {
-                splitByComma[i] = part.split(",");
-            } else {
-                splitByComma[i] = new String[1];
-                splitByComma[i][0] = part;
-            }
-        }
-        for (String parts[] : splitByComma) {
-            for (String part : parts) {
-                System.out.println(part);
-            }
-        }*/
+        Scanner scanner = new Scanner(System.in);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(/*fileName*/"start.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("введите путь к исходнлму файлу");
+        String pathForStartFile = scanner.nextLine(); //добавить проверку на то что файл существует
+
+        System.out.println("введите путь к файлу для вывода ответа");
+        String pathForEndFile = scanner.nextLine();
+
+        System.out.println("введите символ разделитель");
+        String signDelimiter = scanner.nextLine();
+
+        System.out.println("введите символ которым надо объединить результат");
+        String pathUnit = scanner.nextLine();
+
+        //wwwwFileActions.readFileText(pathForStartFile);
+        String fileText = FileActions.readFileText(pathForStartFile);
+
+
+        //TextActions.splitBySign(FileActions.readFileText(pathForStartFile))
+        //FileActions.writeTextToFile(pathForEndFile, TextActions.createNewText(TextActions.splitBySign(FileActions.readFileText(pathForStartFile), signDelimiter)));
+
+        //while ()
 
     }
 }
-//}
