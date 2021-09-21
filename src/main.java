@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -6,7 +7,7 @@ public class main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("введите путь к исходнлму файлу");
-        String pathForStartFile = scanner.nextLine(); //добавить проверку на то что файл существует
+        String pathForStartFile = scanner.nextLine();
 
         System.out.println("введите путь к файлу для вывода ответа");
         String pathForEndFile = scanner.nextLine();
@@ -16,15 +17,14 @@ public class main {
 
         System.out.println("введите символ которым надо объединить результат");
         String pathUnit = scanner.nextLine();
+        /*
+        * C:\Users\Gamer\Documents\3 semester\oop\start.csv
+        * C:\Users\Gamer\Documents\3 semester\FileToWrite.csv
+        */
 
-        //wwwwFileActions.readFileText(pathForStartFile);
         String fileText = FileActions.readFileText(pathForStartFile);
-
-
-        //TextActions.splitBySign(FileActions.readFileText(pathForStartFile))
-        //FileActions.writeTextToFile(pathForEndFile, TextActions.createNewText(TextActions.splitBySign(FileActions.readFileText(pathForStartFile), signDelimiter)));
-
-        //while ()
-
+        ArrayList listOfLines = TextActions.splitBySign(fileText, signDelimiter);
+        String newText = TextActions.createNewText(listOfLines, pathUnit);
+        FileActions.writeTextToFile(pathForEndFile, newText);
     }
 }

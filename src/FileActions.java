@@ -6,7 +6,6 @@ public class FileActions {
         File fileForRead = new File(path);
         String fileText = "";
         char[] a = new char[(int) fileForRead.length()];
-        //String fileName = fileForRead.getName();
 
 
         try (FileReader reader = new FileReader(path)) {

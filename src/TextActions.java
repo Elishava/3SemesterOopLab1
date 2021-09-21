@@ -18,7 +18,6 @@ public class TextActions {
         for (String parts[] : splitBySign) {
             for (String part : parts) {
                 listOfLines.add(part);
-                //System.out.println(part);
             }
         }
         return listOfLines;
@@ -30,8 +29,8 @@ public class TextActions {
             String element = (String) listOfLines.get(i);
             if (element.length() != 0) {
                 if ( i == listOfLines.size() - 1) {
-                    newText += element.length();
-                } else  newText += element.length() + " " + delimiter;
+                    newText += element.length() - 1;
+                } else  newText += element.length() + delimiter;
             }
         }
         return newText;
