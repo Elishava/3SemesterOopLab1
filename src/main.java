@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -17,14 +16,13 @@ public class main {
 
         System.out.println("введите символ которым надо объединить результат");
         String pathUnit = scanner.nextLine();
-        /*
-        * C:\Users\Gamer\Documents\3 semester\oop\start.csv
-        * C:\Users\Gamer\Documents\3 semester\FileToWrite.csv
-        */
 
-        String fileText = FileActions.readFileText(pathForStartFile);
-        ArrayList listOfLines = TextActions.splitBySign(fileText, signDelimiter);
-        String newText = TextActions.createNewText(listOfLines, pathUnit);
-        FileActions.writeTextToFile(pathForEndFile, newText);
+        /*
+         * C:\Users\Gamer\Documents\3 semester\oop\start.csv
+         * C:\Users\Gamer\Documents\3 semester\FileToWrite.csv
+         */
+        FileActions.writeTextToFile(pathForEndFile,
+                TextActions.splitBySign(FileActions.readFileText(pathForStartFile),
+                        signDelimiter, pathUnit));
     }
 }

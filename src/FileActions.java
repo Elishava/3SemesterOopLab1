@@ -1,32 +1,31 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FileActions {
 
-    public static String readFileText (String path) throws IOException {
-        File fileForRead = new File(path);
-        String fileText = "";
-        char[] a = new char[(int) fileForRead.length()];
+    public static List<String> readFileText (String path) throws IOException {
 
+        List<String> lines = Files.readAllLines(Paths.get(path));
 
-        try (FileReader reader = new FileReader(path)) {
-            while (reader.read() != -1) {
-                reader.read(a);
-            }
-            for (char c : a)
-                fileText += c;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        List<String> tokens = new ArrayList<>();
+        for (String line : lines) {
+            Collections.addAll(tokens, line.split("\n"));
         }
-
-        return fileText;
+        return  tokens;
     }
 
 
-    public static void writeTextToFile (String path, String textToWrite) throws IOException {
+    public static void writeTextToFile (String path, ArrayList listOfLines) throws IOException {
 
-        try (FileWriter writer = new FileWriter(path)) {
-            writer.write(textToWrite);
+        File file = new File(path);
+        PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+        for(Object line : listOfLines) {
+            writer.append(line + "\n");
         }
+        writer.close();
     }
 }
